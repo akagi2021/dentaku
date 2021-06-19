@@ -1,7 +1,13 @@
+:root {
+  --cell-size: 50px;
+}
+
 #container {
   display: grid;
-  grid-template-rows: 50px 50px 50px 50px;
-  grid-template-columns: 50px 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px 50px;
+  grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(
+      --cell-size
+    );
 }
 
 #clear {
@@ -88,3 +94,80 @@
   grid-row: 5/6;
   grid-column: 1/3;
 }
+
+.lightgray-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: lightgray;
+  overflow: hidden;
+  transition: background-color 1s ease;
+}
+
+.lightgray-button:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.lightgray-button:active {
+  background-color: ;
+}
+
+.darkgray-button {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--cell-size) / 2);
+  background-color: darkgray;
+  overflow: hidden;
+  transition: background-color 1s ease;
+}
+
+.darkgray-button:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+
+.darkgray-button:active {
+  background-color: ;
+}
+
+.orange-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: orange;
+  overflow: hidden;
+  transition: background-color 1s ease;
+}
+
+.orange-button:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+
+.orange-button:active {
+  background-color: ;
+}
+
+/* NOTE: gridの別な使い方メモ！ */
+/* #container {
+  display: grid;
+  grid-template-areas:
+    "ac ac ac div"
+    "num7 num8 num9 times"
+    "num4 num5 num6 minus"
+    "num1 num2 num3 plus"
+    "num0 num0 dot equal";
+}
+
+#clear {
+  grid-area: ac;
+}
+
+#div {
+  grid-area: div;
+}
+
+#item0 {
+  grid-area: num0;
+} */
