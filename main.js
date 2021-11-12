@@ -42,23 +42,30 @@ function setDisplay(value) {
 
 // 状態をクリア
 function clearAll() {
-  input = 0;
+  input = "";
   sum = 0;
-  setDisplay(input);
+  setDisplay("0");
   mode = MODE.input;
 }
 
 // 数字ボタンが押されたとき
+// function onNumberClicked(num) {
+//   console.log("clicked", num);
+//   input = 10 * input + num;
+//   console.log(input);
+//   setDisplay(input);
+//   mode = MODE.input;
+// }
 function onNumberClicked(num) {
   console.log("clicked", num);
-  input = 10 * input + num;
+  input += String(num);
   console.log(input);
   setDisplay(input);
   mode = MODE.input;
 }
 
 function onOperatorClicked(op) {
-  sum = input;
+  sum = Number(input);
   ope = op;
   if (op === 0) {
     setDisplay("+");
@@ -72,21 +79,21 @@ function onOperatorClicked(op) {
   if (op === 3) {
     setDisplay("÷");
   }
-  input = 0;
+  input = "";
 }
 
 function onEqualClicked() {
   if (ope === 0) {
-    sum += input;
+    sum += Number(input);
   }
   if (ope === 1) {
-    sum -= input;
+    sum -= Number(input);
   }
   if (ope === 2) {
-    sum *= input;
+    sum *= Number(input);
   }
   if (ope === 3) {
-    sum /= input;
+    sum /= Number(input);
   }
   setDisplay(sum);
 }
@@ -96,6 +103,8 @@ clearAll();
 for (let i = 0; i < 10; i += 1) {
   buttons.numbers[i].addEventListener("click", () => onNumberClicked(i));
 }
+// コンマも付け加えられる
+buttons.comma.addEventListener("click", () => onNumberClicked("."));
 
 buttons.plus.addEventListener("click", () => onOperatorClicked(0));
 buttons.minus.addEventListener("click", () => onOperatorClicked(1));
